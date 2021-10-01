@@ -1,0 +1,200 @@
+entity CertifiedPhlebotomist {
+
+id Integer required
+cptNumber String required
+firstName String required
+lastName String required
+maiden String
+mi String
+dob LocalDate
+gender String
+grade BigDecimal
+last4 Integer
+address1 String 
+address2 String
+city String
+state String
+zipcode String
+country String
+phone1 String
+phone2 String
+email String
+raceEthnicity String
+renewalDate LocalDate
+batch String
+chkProcess String
+coaRsNc String
+comments String
+creditAmount BigDecimal 
+dateCardSent LocalDate
+dateCertified LocalDate
+debit BigDecimal
+lastPaymentAmount BigDecimal
+newCertDate LocalDate
+paymentMethod String
+paymentRecDate LocalDate
+processing String
+sectimeCe String
+lastModified Instant
+modifiedBy String
+
+}
+
+entity Reclamation {
+id Integer required
+cptNumber String
+firstName String required
+lastName String required
+maiden String
+mi String
+dob LocalDate 
+gender String
+grade BigDecimal
+last4 Integer
+address1 String
+address2 String
+city String
+state String
+zipcode String
+country String
+emailAddress String
+phone1 String
+phone2 String
+applicationDate LocalDate
+supervisorName String
+employerAddress1 String
+employerAddress2 String
+employerCity String
+employerName String
+employerState String
+employerZipcode String
+profevalRecvDate LocalDate
+profevalMailedDate LocalDate
+profsectimeSentDate LocalDate
+raceEthnicity String
+paymentAmount BigDecimal
+paymentMethod String
+paymentSystem String
+batch String
+comments String
+lastModified Instant
+modifiedBy String
+}
+
+entity TestsiteSchools {
+id Integer required
+name String
+address1 String
+address2 String
+city String
+fax	String
+phone1	String
+phone2	String
+pocEmail String
+pocName	String
+schoolCode String
+state String
+zipcode	Integer
+lastModified Instant
+modifiedBy String
+}
+
+entity Exams {
+id Integer required	
+examDate ZonedDateTime required
+examStatus String
+lastModified Instant
+modifiedBy String
+}
+
+entity Candidates {
+id Integer required
+firstName String required
+lastName String required
+mi String
+maiden String
+address1 String
+address2 String
+batch String
+city String
+comments String
+cptNumber String
+dob LocalDate
+emailAddress String
+examStatus String
+gender String
+grade Integer
+last4 Integer
+passFailed String
+paymentAmount BigDecimal
+paymentMethod String
+phone1 String
+phone2 String
+raceEthnicity String
+secExamGrade Integer
+secExamDate LocalDate
+state String
+zipcode String
+lastModified Instant
+modifiedBy String
+}
+
+entity Orders {
+id Integer required
+orderId Integer
+
+}
+
+entity Proctors {
+id Integer required
+firstName String
+lastName String
+address1 String
+address2 String
+city String
+emailAddress String
+phone1 String
+phone2 String
+proctorDate LocalDate
+state String
+zipcode String
+lastModified Instant
+modifiedBy String
+}
+
+entity NaylorAccount {
+id Integer required
+memberId Integer
+}
+
+entity ExamProctor {
+examId Integer required
+proctorId Integer required
+}
+
+relationship OneToMany {
+  TestsiteSchools to Exams
+}
+
+relationship OneToMany {
+  Exams to Candidates
+}
+
+relationship OneToMany {
+  TestsiteSchools to Candidates
+}
+
+relationship OneToMany {
+ ExamProctor to Proctors
+ ExamProctor to Exams
+}
+
+relationship OneToMany {
+  CertifiedPhlebotomist to Orders
+}
+
+relationship OneToOne {
+  CertifiedPhlebotomist to NaylorAccount
+}
+
+ 
